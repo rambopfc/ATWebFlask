@@ -1,6 +1,6 @@
 import atws
 import atws.monkeypatch.attributes
-from Classes import notesclass
+from app.Classes import notesclass
 
 
 def get_ticketnotes(ticketid, atconnect):

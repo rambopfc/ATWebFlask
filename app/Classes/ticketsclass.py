@@ -1,7 +1,7 @@
-from GetObject.GetCompany import get_companyinfo
-from GetObject.GetCompanyContacts import get_companycontacts
-from GetObject.GetSingleContact import get_singlecontact
-from GetObject.GetStatus import getstatus
+from app.GetObject.GetCompany import get_companyinfo
+from app.GetObject.GetCompanyContacts import get_companycontacts
+from app.GetObject.GetSingleContact import get_singlecontact
+from app.GetObject.GetStatus import get_status
 
 
 class Ticket:
@@ -22,11 +22,35 @@ class Ticket:
         else:
             raise Exception("Ticket ID cannot be blank!")
 
+        # Really wanted to pass a class around here, but after moving to an API this was not really possible...
         companyinfo = get_companyinfo(tickets['AccountID'], at)
-        self.Company = companyinfo
+        self.CompanyID = companyinfo.ID
+        self.CompanyName = companyinfo.Name
+        self.CompanyLimitedPin = companyinfo.LimitedPin
+        self.TopSecretPin = companyinfo.TopSecretPin
+        self.CompanyAddress = companyinfo.Address
+        self.CompanyAddress2 = companyinfo.Address2
+        self.CompanyCity = companyinfo.City
+        self.CompanyPostalCode = companyinfo.Zip
+        self.CompanyPhone = companyinfo.Phone
 
+        # Same situation as above
         contact = get_singlecontact(tickets['ContactID'], at)
-        self.Contact = contact
+        self.ContactAddress = contact.Address
+        self.ContactAddress2 = contact.Address1
+        self.ContactAccountID = contact.ID
+        self.ContactCity = contact.City
+        self.ContactEmail = contact.Email
+        self.ContactEmail2 = contact.Email2
+        self.ContactFirst = contact.FirstName
+        self.ContactLast = contact.LastName
+        self.ContactID = contact.ID
+        self.ContactCell = contact.CellPhone
+        self.ContactPhone = contact.Phone
+        self.ContactIsPrimary = contact.isPrimary
+        self.ContactState = contact.State
+        self.ContactZip = contact.ZipCode
+        self.ContactTitle = contact.Title
 
         if 'Priority' in tickets:
             self.Priority = tickets['Priority']
@@ -44,7 +68,7 @@ class Ticket:
             self.Description = ""
 
         if 'Status' in tickets:
-            self.Status = getstatus(tickets['Status'])
+            self.Status = get_status(tickets['Status'])
         else:
             self.Status = ""
 

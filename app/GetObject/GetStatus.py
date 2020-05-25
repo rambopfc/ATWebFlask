@@ -1,4 +1,4 @@
-def getstatus(i):
+def get_status(i):
     switcher = {
         27: "Needs Hardware Ordered",
         24: "Needs Scheduling",

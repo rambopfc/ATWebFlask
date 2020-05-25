@@ -1,6 +1,6 @@
 import atws
 import atws.monkeypatch.attributes
-from Classes import ticketsclass
+from app.Classes import ticketsclass
 
 
 def get_singleticket(ticketid, atconnect):

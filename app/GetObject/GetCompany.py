@@ -1,6 +1,6 @@
 import atws
 import atws.monkeypatch.attributes
-from Classes import companyclass
+from app.Classes import companyclass
 
 # needs from GetObject.GetCompany import get_companyinfo
 # use like name = get_companyinfo(1432, at)

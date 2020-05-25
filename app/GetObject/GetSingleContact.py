@@ -1,6 +1,6 @@
 import atws
 import atws.monkeypatch.attributes
-from Classes import contactclass
+from app.Classes import contactclass
 
 # needs from GetObject.GetSingleContact import get_singlecontact
 # use like name = get_singlecontact(1432, at)

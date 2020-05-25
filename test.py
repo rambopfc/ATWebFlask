@@ -1,12 +1,12 @@
 import atws.monkeypatch.attributes
 import os
-from Classes import companyclass
-from Classes import ticketsclass
-from GetObject import GetCompany
-from GetObject.GetCompany import get_companyinfo
-from GetObject.GetCompanyContacts import get_companycontacts
-from GetObject.GetSingleTicket import get_singleticket
-from GetObject.GetTicketNotes import get_ticketnotes
+from app.Classes import companyclass
+from app.Classes import ticketsclass
+from app.GetObject import GetCompany
+from app.GetObject.GetCompany import get_companyinfo
+from app.GetObject.GetCompanyContacts import get_companycontacts
+from app.GetObject.GetSingleTicket import get_singleticket
+from app.GetObject.GetTicketNotes import get_ticketnotes
 
 at = atws.connect(username=os.environ.get('AT_USER'), password=os.environ.get('AT_PW'), apiversion=1.6,
                   integrationcode=os.environ.get('AT_CODE'))
