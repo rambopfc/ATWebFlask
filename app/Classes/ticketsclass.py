@@ -34,23 +34,40 @@ class Ticket:
         self.CompanyPostalCode = companyinfo.Zip
         self.CompanyPhone = companyinfo.Phone
 
-        # Same situation as above
-        contact = get_singlecontact(tickets['ContactID'], at)
-        self.ContactAddress = contact.Address
-        self.ContactAddress2 = contact.Address1
-        self.ContactAccountID = contact.ID
-        self.ContactCity = contact.City
-        self.ContactEmail = contact.Email
-        self.ContactEmail2 = contact.Email2
-        self.ContactFirst = contact.FirstName
-        self.ContactLast = contact.LastName
-        self.ContactID = contact.ID
-        self.ContactCell = contact.CellPhone
-        self.ContactPhone = contact.Phone
-        self.ContactIsPrimary = contact.isPrimary
-        self.ContactState = contact.State
-        self.ContactZip = contact.ZipCode
-        self.ContactTitle = contact.Title
+        if 'ContactID' in tickets:
+            # Same situation as above
+            contact = get_singlecontact(tickets['ContactID'], at)
+            self.ContactAddress = contact.Address
+            self.ContactAddress2 = contact.Address1
+            self.ContactAccountID = contact.ID
+            self.ContactCity = contact.City
+            self.ContactEmail = contact.Email
+            self.ContactEmail2 = contact.Email2
+            self.ContactFirst = contact.FirstName
+            self.ContactLast = contact.LastName
+            self.ContactID = contact.ID
+            self.ContactCell = contact.CellPhone
+            self.ContactPhone = contact.Phone
+            self.ContactIsPrimary = contact.isPrimary
+            self.ContactState = contact.State
+            self.ContactZip = contact.ZipCode
+            self.ContactTitle = contact.Title
+        else:
+            self.ContactAddress = ""
+            self.ContactAddress2 = ""
+            self.ContactAccountID = ""
+            self.ContactCity = ""
+            self.ContactEmail = ""
+            self.ContactEmail2 = ""
+            self.ContactFirst = ""
+            self.ContactLast = ""
+            self.ContactID = ""
+            self.ContactCell = ""
+            self.ContactPhone = ""
+            self.ContactIsPrimary = ""
+            self.ContactState = ""
+            self.ContactZip = ""
+            self.ContactTitle = ""
 
         if 'Priority' in tickets:
             self.Priority = tickets['Priority']
@@ -75,4 +92,9 @@ class Ticket:
         if 'Status' in tickets:
             self.StatusID = tickets['Status']
         else:
-            self.Status = ""
+            self.StatusID = ""
+
+        if 'QueueID' in tickets:
+            self.QueueID = tickets['QueueID']
+        else:
+            self.QueueID = ""
